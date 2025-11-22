@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<!--
+    Stryverse Landing Page
+    Where Stories Belong to Everyone
+    
+    Launch Timeline: Q1 2026
+    - Alpha: December 2025
+    - Beta: February 2026  
+    - Public: April 2026
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join Stryverse - where you vote on story decisions with thousands of others. Watch stories unfold based on collective choices. Be part of the Genesis Vote.">
+    <meta name="keywords" content="interactive storytelling, choose your adventure, collective decisions, daily episodes, story voting">
+    <meta property="og:title" content="Stryverse - Choose the Story. Shape the Future.">
+    <meta property="og:description" content="Every day. Two paths. Your choice. Join thousands shaping stories together.">
+    <meta property="og:type" content="website">
+    <title>Stryverse - Choose the Story. Shape the Future.</title>
+    
+    <!-- ConvertKit Form Script -->
+    <script async data-uid="12d90efd93" src="https://stryverse.kit.com/12d90efd93/index.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --primary-dark: #0a0a0a;
+            --primary-light: #ffffff;
+            --accent-gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            --text-gradient: linear-gradient(135deg, #A78BFA 0%, #F472B6 100%);
+            --max-width: 1200px;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--primary-dark);
+            color: var(--primary-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--text-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover {
+            opacity: 1;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        .gradient-text {
+            background: var(--text-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            opacity: 0.9;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+        
+        /* Waitlist Form */
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+        .form-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .waitlist-input {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--primary-light);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .waitlist-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        .waitlist-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #8B5CF6;
+        }
+        .waitlist-button {
+            padding: 1rem 2.5rem;
+            background: var(--accent-gradient);
+            border: none;
+            border-radius: 8px;
+            color: var(--primary-light);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.3s;
+            white-space: nowrap;
+        }
+        .waitlist-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        .waitlist-button:active {
+            transform: translateY(0);
+        }
+        .form-message {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        .success-message {
+            color: #4ade80;
+            font-weight: 500;
+        }
+        
+        /* Hide ConvertKit branding (optional) */
+        .formkit-powered-by-convertkit-container {
+            display: none !important;
+        }
+        
+        /* Share Section */
+        .share-section {
+            padding: 3rem 2rem;
+            background: rgba(139, 92, 246, 0.05);
+            border-radius: 16px;
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        .share-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--text-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .share-subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .share-button {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .share-button:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(139, 92, 246, 0.5);
+            transform: translateY(-2px);
+        }
+        .share-button svg {
+            width: 20px;
+            height: 20px;
+        }
+        .copy-button {
+            background: var(--accent-gradient);
+            border: none;
+        }
+        .copy-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        .copy-success {
+            display: none;
+            color: #4ade80;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+        .already-signed-up {
+            padding: 2rem;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 12px;
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            text-align: center;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        /* Demo Section */
+        .demo-section {
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+        .demo-container {
+            max-width: 450px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+        .demo-frame {
+            width: 100%;
+            height: 90vh;
+            max-height: 800px;
+            border: none;
+        }
+        
+        /* How It Works */
+        .how-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .how-item {
+            text-align: center;
+        }
+        .how-number {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .how-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .how-text {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Features Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+        }
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        .feature-description {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Genesis Vote */
+        .genesis-box {
+            border: 2px solid rgba(139, 92, 246, 0.5);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            background: rgba(139, 92, 246, 0.05);
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .genesis-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            background: var(--text-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        details {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        summary {
+            font-weight: 600;
+            font-size: 1.1rem;
+            list-style: none;
+        }
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        details p {
+            margin-top: 1rem;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-links a {
+            color: var(--primary-light);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            font-size: 0.9rem;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        .copyright {
+            opacity: 0.5;
+            font-size: 0.9rem;
+        }
+        
+        /* Background Animation */
+        .bg-gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0.3;
+            filter: blur(100px);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .bg-gradient::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #8B5CF6 0%, transparent 70%);
+            top: -300px;
+            right: -200px;
+            animation: float 20s ease-in-out infinite;
+        }
+        .bg-gradient::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #EC4899 0%, transparent 70%);
+            bottom: -200px;
+            left: -100px;
+            animation: float 25s ease-in-out infinite reverse;
+        }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(-30px, -10px) scale(1.02); }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-in {
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .form-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .waitlist-input {
+                min-width: 100%;
+                max-width: 100%;
+            }
+            .waitlist-button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Stryverse</div>
+            <ul class="nav-links">
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#how">How It Works</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#join">Join</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="bg-gradient"></div>
+        <div class="hero-content animate-in">
+            <h1 class="hero-title">
+                Stories That<br>
+                <span class="gradient-text">Belong to Everyone</span>
+            </h1>
+            <p class="hero-subtitle">
+                Watch. Choose. Shape tomorrow's story with a growing community.<br>
+                Every day, one decision. Together, we write what happens next.
+            </p>
+            
+            <!-- ConvertKit Form -->
+            <div data-uid="12d90efd93" style="max-width: 500px; margin: 0 auto;"></div>
+            
+            <p class="form-message">
+                Join the Genesis Vote • Shape the platform • Lifetime benefits
+            </p>
+            
+            <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.95rem;">
+                👇 Try the demo below (30 seconds)
+            </p>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="section demo-section" id="demo">
+        <div class="container">
+            <h2 class="section-title">Experience It Yourself</h2>
+            <p style="text-align: center; font-size: 1.1rem; opacity: 0.8; margin-bottom: 3rem;">
+                This is what it feels like. Takes 30 seconds.
+            </p>
+            
+            <div class="demo-container">
+                <iframe 
+                    src="stryverse-demo-ENHANCED.html" 
+                    class="demo-frame"
+                    id="demoFrame"
+                    title="Stryverse Interactive Demo"
+                ></iframe>
+            </div>
+            
+            <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; opacity: 0.6;">
+                This demo shows the basics. The full experience has more.
+            </p>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section" id="how" style="background: #0f0f0f;">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <div class="how-grid">
+                <div class="how-item">
+                    <div class="how-number">1</div>
+                    <h3 class="how-title">Watch the Moment</h3>
+                    <p class="how-text">
+                        Every day, a new episode. A character faces a choice. A relationship hangs in balance. The story could go anywhere.
+                    </p>
+                </div>
+                <div class="how-item">
+                    <div class="how-number">2</div>
+                    <h3 class="how-title">Make Your Choice</h3>
+                    <p class="how-text">
+                        Two paths diverge. You choose one. Your vote joins thousands of others deciding what happens next.
+                    </p>
+                </div>
+                <div class="how-item">
+                    <div class="how-number">3</div>
+                    <h3 class="how-title">See What Wins</h3>
+                    <p class="how-text">
+                        The next day, the winning path becomes reality. Watch the story unfold from the choice you helped make.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features" style="background: linear-gradient(180deg, #1a1a1a 0%, #0a0a0a 100%);">
+        <div class="container">
+            <h2 class="section-title">Why Stryverse is Different</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title">Daily Episodes</h3>
+                    <p class="feature-description">
+                        No more waiting months between seasons. Fresh content every morning. The story never stops evolving.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title">Collective Power</h3>
+                    <p class="feature-description">
+                        Your vote matters. Help shape what happens next. Watch democracy shape entertainment in real-time.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title">Real Consequences</h3>
+                    <p class="feature-description">
+                        Every choice ripples forward. Past decisions shape future episodes. The narrative is persistent and evolving.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title">For Creators</h3>
+                    <p class="feature-description">
+                        Build engaged audiences that return daily. Earn sustainable income. Keep creative control while your viewers shape the journey.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title">No FOMO</h3>
+                    <p class="feature-description">
+                        Early access members experience something special about how choices work. Join now to see what we mean.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3 class="feature-title">Your Daily Ritual</h3>
+                    <p class="feature-description">
+                        Morning coffee. Evening wind-down. Stryverse fits your rhythm. Quick moments of choice that matter.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Genesis Vote -->
+    <section class="section" style="background: radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);">
+        <div class="container">
+            <div class="genesis-box">
+                <h2 class="genesis-title">The Genesis Vote</h2>
+                <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">
+                    Be Part of History
+                </p>
+                <p style="font-size: 1rem; line-height: 1.6; opacity: 0.9; margin-bottom: 2rem;">
+                    Every early access member participates in Stryverse's first-ever collective decision. 
+                    Choose which creator launches our first universe. This vote happens only once. Ever.
+                </p>
+                <p style="font-size: 0.95rem; font-style: italic; opacity: 0.8;">
+                    "Where were you when the first Stryverse story was chosen?"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq" style="background: var(--primary-dark);">
+        <div class="container">
+            <h2 class="section-title">Common Questions</h2>
+            <div class="faq-container">
+                <details>
+                    <summary>Is it free to join?</summary>
+                    <p>Yes. Basic membership is completely free. Vote on stories, watch episodes, and shape narratives without paying anything.</p>
+                </details>
+                <details>
+                    <summary>When does it launch?</summary>
+                    <p>Beta access begins January 2026 for early access members. Public launch April 2026. Get on the list now to be first.</p>
+                </details>
+                <details>
+                    <summary>How much time does it take?</summary>
+                    <p>Just 5-7 minutes daily. Experience a story moment, make your choice, see the community's decision. Perfect for your morning routine or evening wind-down.</p>
+                </details>
+                <details>
+                    <summary>Can I create my own stories?</summary>
+                    <p>Yes! We're actively recruiting creators. Build your universe, engage daily with your audience, and earn predictable income. Apply for creator access after joining.</p>
+                </details>
+                <details>
+                    <summary>What makes this different from other interactive stories?</summary>
+                    <p>You'll see when you join. There's something about how early access members experience the choice system that changes everything.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section" id="join" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);">
+        <div class="container" style="text-align: center; max-width: 800px;">
+            <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1.5rem; font-weight: 700;">
+                Stop Watching. Start <span class="gradient-text">Shaping.</span>
+            </h2>
+            <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem; line-height: 1.6;">
+                Traditional shows decide for you. Stryverse puts the choice in your hands. 
+                Join the movement. Help write the future of entertainment, one decision at a time.
+            </p>
+            
+            <!-- ConvertKit Form -->
+            <div data-uid="12d90efd93" style="max-width: 500px; margin: 2rem auto;"></div>
+            
+            <p style="font-size: 0.9rem; opacity: 0.6; margin-top: 1rem;">
+                Takes 5 seconds • No credit card required • Unsubscribe anytime
+            </p>
+        </div>
+    </section>
+
+    <!-- Share Section (shown after signup) -->
+    <section class="section" id="shareContainer" style="display: none; background: var(--primary-dark);">
+        <div class="container">
+            <div class="share-section">
+                <h3 class="share-title">Help Us Grow 🚀</h3>
+                <p class="share-subtitle">
+                    Share Stryverse with friends who'd love to shape stories together
+                </p>
+                
+                <div class="share-buttons">
+                    <!-- Twitter/X -->
+                    <a href="javascript:void(0)" onclick="shareTwitter()" class="share-button">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                        Share on X
+                    </a>
+                    
+                    <!-- Facebook -->
+                    <a href="javascript:void(0)" onclick="shareFacebook()" class="share-button">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                        Share
+                    </a>
+                    
+                    <!-- Copy Link -->
+                    <button onclick="copyLink()" class="share-button copy-button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+                        </svg>
+                        Copy Link
+                    </button>
+                </div>
+                
+                <p class="copy-success" id="copySuccess">✓ Link copied to clipboard!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">About</a>
+                <a href="#">For Creators</a>
+                <a href="#">Community Guidelines</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+            </div>
+            <p class="copyright">© 2025 Stryverse. Where stories belong to everyone.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ========================================
+        // RETURN VISITOR DETECTION
+        // ========================================
+        
+        function checkSignupStatus() {
+            const hasSignedUp = localStorage.getItem('stryverse_signed_up');
+            
+            if (hasSignedUp === 'true') {
+                // Replace both signup forms with thank you message
+                const formDivs = document.querySelectorAll('[data-uid="12d90efd93"]');
+                
+                formDivs.forEach(formDiv => {
+                    formDiv.innerHTML = `
+                        <div class="already-signed-up">
+                            <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #A78BFA;">
+                                ✓ You're on the list!
+                            </h3>
+                            <p style="opacity: 0.9; margin-bottom: 1rem;">
+                                Check your email for confirmation. See you in early access!
+                            </p>
+                            <button onclick="resetSignup()" style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; cursor: pointer; font-size: 0.9rem;">
+                                Sign up with different email →
+                            </button>
+                        </div>
+                    `;
+                });
+                
+                // Show share section
+                showShareSection();
+            }
+        }
+        
+        function resetSignup() {
+            localStorage.removeItem('stryverse_signed_up');
+            location.reload();
+        }
+        
+        function markAsSignedUp() {
+            localStorage.setItem('stryverse_signed_up', 'true');
+        }
+        
+        // ========================================
+        // SHARE FUNCTIONALITY
+        // ========================================
+        
+        let pageUrl = window.location.href;
+        const pageTitle = "Stryverse - Choose the Story. Shape the Future.";
+        
+        function showShareSection() {
+            const shareContainer = document.getElementById('shareContainer');
+            if (shareContainer) {
+                shareContainer.style.display = 'block';
+                shareContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+        
+        function shareTwitter() {
+            const text = "Just joined Stryverse - interactive storytelling where communities vote on story decisions daily. Like Telltale meets TikTok! 🎬";
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(pageUrl)}`;
+            window.open(url, '_blank', 'width=550,height=420');
+        }
+        
+        function shareFacebook() {
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
+            window.open(url, '_blank', 'width=550,height=420');
+        }
+        
+        function copyLink() {
+            navigator.clipboard.writeText(pageUrl).then(() => {
+                const successMsg = document.getElementById('copySuccess');
+                successMsg.style.display = 'block';
+                
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+            }).catch(err => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = pageUrl;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                const successMsg = document.getElementById('copySuccess');
+                successMsg.style.display = 'block';
+                setTimeout(() => {
+                    successMsg.style.display = 'none';
+                }, 3000);
+            });
+        }
+        
+        // ========================================
+        // CONVERTKIT FORM TRACKING
+        // ========================================
+        
+        // Watch for ConvertKit form submissions
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                mutation.addedNodes.forEach(function(node) {
+                    // Check if ConvertKit showed success message
+                    if (node.textContent && 
+                        (node.textContent.toLowerCase().includes('success') || 
+                         node.textContent.toLowerCase().includes('thank you') ||
+                         node.textContent.toLowerCase().includes('check your email'))) {
+                        
+                        markAsSignedUp();
+                        
+                        setTimeout(() => {
+                            checkSignupStatus();
+                        }, 2000);
+                    }
+                });
+            });
+        });
+        
+        // Start observing ConvertKit form containers
+        function startFormObserver() {
+            const formContainers = document.querySelectorAll('[data-uid="12d90efd93"]');
+            formContainers.forEach(container => {
+                observer.observe(container, { 
+                    childList: true, 
+                    subtree: true,
+                    characterData: true
+                });
+            });
+        }
+        
+        // ========================================
+        // DEMO IFRAME COMMUNICATION
+        // ========================================
+        
+        window.addEventListener('message', function(event) {
+            if (event.data.type === 'scrollToSignup') {
+                // Scroll to the hero section
+                const heroSection = document.querySelector('.hero');
+                if (heroSection) {
+                    heroSection.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            }
+        });
+        
+        // ========================================
+        // SMOOTH NAVIGATION
+        // ========================================
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const target = document.getElementById(targetId);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // ========================================
+        // INITIALIZATION
+        // ========================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if user already signed up
+            checkSignupStatus();
+            
+            // Start watching for form submissions
+            setTimeout(startFormObserver, 2000); // Wait for ConvertKit to load
+        });
+    </script>
+</body>
+</html>
