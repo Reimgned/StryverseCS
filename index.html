@@ -291,6 +291,32 @@
             .timer-number { font-size: 1.8rem; }
             .timer-separator { font-size: 1.5rem; }
         }
+
+        /* Sticky Mobile Button (NEW) */
+        .sticky-cta {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 999;
+            background: var(--accent-gradient);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            display: none; /* Hidden by default */
+            width: 90%;
+            text-align: center;
+            font-family: var(--font-heading);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            transition: transform 0.2s;
+        }
+        .sticky-cta:active {
+            transform: translateX(-50%) scale(0.98);
+        }
         
         /* Share Section */
         .share-section {
@@ -497,7 +523,7 @@
                     <ul class="formkit-alert formkit-alert-error" data-element="errors" data-group="alert"></ul>
                     <div data-element="fields" data-stacked="false" class="seva-fields formkit-fields">
                         <div class="formkit-field"><input class="formkit-input" name="email_address" aria-label="Email Address" placeholder="Email Address" required="" type="email" style="color: rgb(0, 0, 0); border-color: rgb(227, 227, 227); border-radius: 4px; font-weight: 400;"></div>
-                        <button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span>Get Early Access →</span></button>
+                        <button data-element="submit" class="formkit-submit formkit-submit" style="color: rgb(255, 255, 255); background-color: rgb(22, 119, 190); border-radius: 4px; font-weight: 400;"><div class="formkit-spinner"><div></div><div></div><div></div></div><span>Claim My Citizen ID →</span></button>
                     </div>
                     <div class="formkit-guarantee" data-element="guarantee" style="color: rgba(255, 255, 255, 0.6); font-size: 13px; font-weight: 400;"><p>✓ First to use the platform ✓ Lifetime early adopter benefits</p></div>
                 </div>
@@ -659,6 +685,8 @@
             <p class="copyright">© 2025 Stryverse. Where stories belong to everyone.</p>
         </div>
     </footer>
+    
+    <a href="#join" class="sticky-cta" id="stickyBtn">✨ Join The Genesis Vote</a>
 
     <script>
         // ========================================
@@ -669,10 +697,9 @@
             const btn = document.querySelector('.mobile-menu-btn');
             nav.classList.toggle('active');
             
-            // Toggle hamburger icon
             if(nav.classList.contains('active')) {
                 btn.innerHTML = '✕';
-                document.body.style.overflow = 'hidden'; // Prevent scrolling
+                document.body.style.overflow = 'hidden';
             } else {
                 btn.innerHTML = '☰';
                 document.body.style.overflow = 'auto';
@@ -699,8 +726,7 @@
 
         async function fetchStats() {
             try {
-                // FIXED: CACHE BUSTING ADDED BELOW
-                // We add ?t=timestamp to force the browser to get a fresh file every time
+                // CACHE BUSTING: Forces fresh data
                 const response = await fetch('stats.json?t=' + new Date().getTime());
                 if (!response.ok) throw new Error("Stats file not found");
                 
@@ -717,19 +743,15 @@
             const fillEl = document.getElementById('progress-fill');
             const remainingEl = document.getElementById('spots-remaining');
             
-            // Animate number
             countEl.innerText = count;
             
-            // Calculate percentage
             let percentage = (count / GOAL) * 100;
             if(percentage > 100) percentage = 100;
             
-            // Animate width
             setTimeout(() => {
                 fillEl.style.width = percentage + "%";
             }, 100);
 
-            // Update text
             const remaining = GOAL - count;
             if (remaining <= 0) {
                 remainingEl.innerText = "Waitlist Active - Joining Queue";
@@ -810,10 +832,24 @@
                 const target = document.getElementById(targetId);
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Close menu if open (for mobile)
                     closeMenu();
                 }
             });
+        });
+
+        // Sticky Button Logic (NEW)
+        window.addEventListener('scroll', function() {
+            const hero = document.querySelector('.hero');
+            const btn = document.getElementById('stickyBtn');
+            // Show button when user scrolls past the hero section
+            if (hero && btn) {
+                const heroBottom = hero.offsetTop + hero.offsetHeight;
+                if (window.scrollY > heroBottom) {
+                    btn.style.display = 'block';
+                } else {
+                    btn.style.display = 'none';
+                }
+            }
         });
 
         // Countdown Timer Logic
