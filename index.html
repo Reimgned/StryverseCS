@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Join Stryverse - where you vote on story decisions with thousands of others. Watch stories unfold based on collective choices.">
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://f.convertkit.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://stryverse.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://f.convertkit.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://stryverse.com; frame-ancestors 'none';">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://stryverse.com/">
@@ -234,43 +234,33 @@
             animation: glitch-anim-2 4s infinite linear alternate-reverse;
         }
         
-        /* Keyframe 1: Syncopated, aggressive tearing with pauses */
         @keyframes glitch-anim-1 {
             0% { clip: rect(20px, 9999px, 81px, 0); transform: translate(0) skew(0); }
             10% { clip: rect(62px, 9999px, 13px, 0); transform: translate(0) skew(0); }
-            /* Pause */
             11% { clip: rect(62px, 9999px, 13px, 0); transform: translate(0) skew(0); }
             20% { clip: rect(62px, 9999px, 13px, 0); transform: translate(0) skew(0); }
-            /* Snap */
             21% { clip: rect(11px, 9999px, 88px, 0); transform: translate(-2px, 1px) skew(2deg); }
             22% { clip: rect(11px, 9999px, 88px, 0); transform: translate(2px, -1px) skew(-2deg); }
             23% { clip: rect(11px, 9999px, 88px, 0); transform: translate(0) skew(0); }
-            /* Pause */
             50% { clip: rect(34px, 9999px, 64px, 0); transform: translate(0) skew(0); }
             55% { clip: rect(34px, 9999px, 64px, 0); transform: translate(0) skew(0); }
-            /* Snap */
             56% { clip: rect(98px, 9999px, 4px, 0); transform: translate(2px, 2px) skew(3deg); }
             57% { clip: rect(9px, 9999px, 50px, 0); transform: translate(-2px, -2px) skew(-3deg); }
             60% { clip: rect(9px, 9999px, 50px, 0); transform: translate(0) skew(0); }
             100% { clip: rect(83px, 9999px, 40px, 0); transform: translate(0) skew(0); }
         }
         
-        /* Keyframe 2: Counter-rhythm for depth */
         @keyframes glitch-anim-2 {
             0% { clip: rect(65px, 9999px, 100px, 0); transform: translate(0) skew(0); }
             25% { clip: rect(65px, 9999px, 100px, 0); transform: translate(0) skew(0); }
-            /* Snap */
             26% { clip: rect(13px, 9999px, 76px, 0); transform: translate(-2px, -1px) skew(-2deg); }
             27% { clip: rect(13px, 9999px, 76px, 0); transform: translate(2px, 1px) skew(2deg); }
             30% { clip: rect(13px, 9999px, 76px, 0); transform: translate(0) skew(0); }
-            /* Pause */
             60% { clip: rect(22px, 9999px, 55px, 0); transform: translate(0) skew(0); }
-            /* Snap */
             61% { clip: rect(22px, 9999px, 55px, 0); transform: translate(3px, -2px) skew(5deg); }
             65% { clip: rect(22px, 9999px, 55px, 0); transform: translate(0) skew(0); }
             100% { clip: rect(79px, 9999px, 32px, 0); transform: translate(0) skew(0); }
         }
-        /* -------------------------------------- */
         
         .hero-subtitle {
             font-size: clamp(1.1rem, 2.5vw, 1.3rem);
@@ -778,10 +768,6 @@
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
                         </a>
 
-                        <a href="javascript:void(0)" onclick="shareTelegram()" rel="noopener noreferrer" class="share-button" style="background: #24A1DE;">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 11.944 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-                        </a>
-
                         <button onclick="copyLink()" class="share-button copy-button">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
                             Copy
@@ -960,9 +946,17 @@
         }
         
         window.addEventListener('message', function(event) {
+            // SECURITY CHECK: Only accept messages from your own domain
+            // if (event.origin !== "https://stryverse.com") return;
+
             if (event.data.type === 'scrollToSignup') {
                 const heroSection = document.getElementById('join');
-                if (heroSection) heroSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (heroSection) {
+                    heroSection.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }
             }
         });
         
