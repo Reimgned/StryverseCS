@@ -315,6 +315,16 @@
             font-weight: 300;
         }
         
+        /* Blinking Text Animation */
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .blink-text {
+            animation: blink 1s step-end infinite;
+        }
+        
         /* Buttons */
         .btn-primary {
             width: 100%;
@@ -412,7 +422,7 @@
                 </div>
                 <div style="padding: 20px;">
                     <button class="btn-primary" onclick="playSequence()">
-                        Start Sequence
+                        <span class="blink-text">Start Sequence</span>
                     </button>
                 </div>
                 <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
