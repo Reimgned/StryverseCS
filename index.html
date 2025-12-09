@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Join Stryverse - where you vote on story decisions with thousands of others. Watch stories unfold based on collective choices.">
     
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://f.convertkit.com https://va.vercel-scripts.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src 'self' https://stryverse.com; connect-src 'self' https://app.kit.com https://api.convertkit.com; form-action 'self' https://app.kit.com; frame-ancestors 'none';">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://stryverse.com/">
     <meta property="og:title" content="Stryverse - The Story Listens to You">
     <meta property="og:description" content="Join the first Massively Multiplayer Narrative. We vote on the story outcome daily. Alpha access limited to first 1,000.">
     <meta property="og:image" content="preview.jpg">
     <meta property="twitter:card" content="summary_large_image">
-
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔮</text></svg>">
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -36,7 +33,6 @@
       }
     }
     </script>
-
     <title>Stryverse - Choose the Story. Shape the Future.</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,447 +43,66 @@
     <script defer src="/_vercel/insights/script.js"></script>
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
-            --primary-dark: #0a0a0a;
-            --primary-light: #ffffff;
-            --accent-gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
-            --text-gradient: linear-gradient(135deg, #A78BFA 0%, #F472B6 100%);
-            --max-width: 1200px;
-            --font-heading: 'Space Grotesk', sans-serif;
-            --font-body: 'Inter', sans-serif;
-        }
-        body {
-            font-family: var(--font-body);
-            background: var(--primary-dark);
-            color: var(--primary-light);
-            overflow-x: hidden;
-            line-height: 1.6;
-            letter-spacing: -0.01em;
-        }
-        
-        h1, h2, h3, .logo, .nav-links a, .waitlist-button, .feature-title, .how-number, .how-title {
-            font-family: var(--font-heading);
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 10, 10, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            padding: 1.5rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .nav-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: var(--text-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.03em;
-            position: relative;
-            z-index: 1002;
-        }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        .nav-links a {
-            color: var(--primary-light);
-            text-decoration: none;
-            opacity: 0.7;
-            transition: all 0.3s;
-            font-size: 0.95rem;
-            font-weight: 500;
-        }
-        .nav-links a:hover {
-            opacity: 1;
-            color: #A78BFA;
-        }
-
-        /* MOBILE NAV STYLES */
-        .mobile-menu-btn {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: white;
-            z-index: 1002;
-            user-select: none;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            .nav-links {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background: #0a0a0a;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                padding: 2rem;
-                gap: 2.5rem;
-                transform: translateY(-100%);
-                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                z-index: 1001;
-            }
-            .nav-links.active {
-                transform: translateY(0);
-            }
-            .nav-links a {
-                font-size: 1.5rem;
-                opacity: 1;
-            }
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 8rem 2rem 4rem;
-            position: relative;
-        }
-        .hero-content {
-            max-width: 800px;
-            text-align: center;
-            z-index: 2;
-            position: relative;
-        }
-        .hero-title {
-            font-size: clamp(2.5rem, 7vw, 5rem);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-        }
-        
-        /* -------------------------------------- */
-        /* LEVEL 10: RGB KINETIC GLITCH           */
-        /* -------------------------------------- */
-        .glitch-wrapper {
-            position: relative;
-            display: inline-block;
-        }
-        
-        .glitch {
-            position: relative;
-            display: inline-block;
-            color: var(--primary-light);
-            font-weight: 700;
-            /* Scanline Texture Overlay */
-            background: linear-gradient(
-                to bottom,
-                rgba(255,255,255,0),
-                rgba(255,255,255,0) 50%,
-                rgba(0,0,0,0.2) 50%,
-                rgba(0,0,0,0.2)
-            );
-            background-size: 100% 4px;
-        }
-        
-        .glitch::before,
-        .glitch::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0a0a0a; /* Matches background to hide main text */
-        }
-        
-        /* The Red/Cyan Split Layer */
-        .glitch::before {
-            left: 2px;
-            text-shadow: -2px 0 #ff00c1; /* Red/Pink offset */
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim-1 4s infinite linear alternate-reverse;
-        }
-        
-        /* The Blue/Cyan Split Layer */
-        .glitch::after {
-            left: -2px;
-            text-shadow: -2px 0 #00fff9; /* Cyan/Blue offset */
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim-2 4s infinite linear alternate-reverse;
-        }
-        
-        @keyframes glitch-anim-1 {
-            0% { clip: rect(20px, 9999px, 81px, 0); transform: translate(0) skew(0); }
-            10% { clip: rect(62px, 9999px, 13px, 0); transform: translate(0) skew(0); }
-            11% { clip: rect(62px, 9999px, 13px, 0); transform: translate(0) skew(0); }
-            20% { clip: rect(62px, 9999px, 13px, 0); transform: translate(0) skew(0); }
-            21% { clip: rect(11px, 9999px, 88px, 0); transform: translate(-2px, 1px) skew(2deg); }
-            22% { clip: rect(11px, 9999px, 88px, 0); transform: translate(2px, -1px) skew(-2deg); }
-            23% { clip: rect(11px, 9999px, 88px, 0); transform: translate(0) skew(0); }
-            50% { clip: rect(34px, 9999px, 64px, 0); transform: translate(0) skew(0); }
-            55% { clip: rect(34px, 9999px, 64px, 0); transform: translate(0) skew(0); }
-            56% { clip: rect(98px, 9999px, 4px, 0); transform: translate(2px, 2px) skew(3deg); }
-            57% { clip: rect(9px, 9999px, 50px, 0); transform: translate(-2px, -2px) skew(-3deg); }
-            60% { clip: rect(9px, 9999px, 50px, 0); transform: translate(0) skew(0); }
-            100% { clip: rect(83px, 9999px, 40px, 0); transform: translate(0) skew(0); }
-        }
-        
-        @keyframes glitch-anim-2 {
-            0% { clip: rect(65px, 9999px, 100px, 0); transform: translate(0) skew(0); }
-            25% { clip: rect(65px, 9999px, 100px, 0); transform: translate(0) skew(0); }
-            26% { clip: rect(13px, 9999px, 76px, 0); transform: translate(-2px, -1px) skew(-2deg); }
-            27% { clip: rect(13px, 9999px, 76px, 0); transform: translate(2px, 1px) skew(2deg); }
-            30% { clip: rect(13px, 9999px, 76px, 0); transform: translate(0) skew(0); }
-            60% { clip: rect(22px, 9999px, 55px, 0); transform: translate(0) skew(0); }
-            61% { clip: rect(22px, 9999px, 55px, 0); transform: translate(3px, -2px) skew(5deg); }
-            65% { clip: rect(22px, 9999px, 55px, 0); transform: translate(0) skew(0); }
-            100% { clip: rect(79px, 9999px, 32px, 0); transform: translate(0) skew(0); }
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
-            opacity: 0.85;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            line-height: 1.5;
-            color: #e0e0e0;
-        }
-
-        /* PROGRESS BAR STYLES */
-        .scarcity-container {
-            max-width: 420px;
-            margin: 0 auto 1.5rem;
-            text-align: left;
-            background: rgba(255,255,255,0.03);
-            padding: 1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .scarcity-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            font-family: var(--font-heading);
-            color: #fff;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root { --primary-dark: #0a0a0a; --primary-light: #ffffff; --accent-gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%); --text-gradient: linear-gradient(135deg, #A78BFA 0%, #F472B6 100%); --max-width: 1200px; --font-heading: 'Space Grotesk', sans-serif; --font-body: 'Inter', sans-serif; }
+        body { font-family: var(--font-body); background: var(--primary-dark); color: var(--primary-light); overflow-x: hidden; line-height: 1.6; letter-spacing: -0.01em; }
+        h1, h2, h3, .logo, .nav-links a, .waitlist-button, .feature-title, .how-number, .how-title { font-family: var(--font-heading); }
+        nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.85); backdrop-filter: blur(12px); z-index: 1000; padding: 1.5rem 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .nav-container { max-width: var(--max-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 700; background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.03em; position: relative; z-index: 1002; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--primary-light); text-decoration: none; opacity: 0.7; transition: all 0.3s; font-size: 0.95rem; font-weight: 500; }
+        .nav-links a:hover { opacity: 1; color: #A78BFA; }
+        .mobile-menu-btn { display: none; font-size: 1.5rem; cursor: pointer; color: white; z-index: 1002; user-select: none; }
+        @media (max-width: 768px) { .mobile-menu-btn { display: block; } .nav-links { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #0a0a0a; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; gap: 2.5rem; transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); z-index: 1001; } .nav-links.active { transform: translateY(0); } .nav-links a { font-size: 1.5rem; opacity: 1; } }
+        .hero { min-height: 90vh; display: flex; align-items: center; justify-content: center; padding: 8rem 2rem 4rem; position: relative; }
+        .hero-content { max-width: 800px; text-align: center; z-index: 2; position: relative; }
+        .hero-title { font-size: clamp(2.5rem, 7vw, 5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.03em; }
+        .glitch-wrapper { position: relative; display: inline-block; }
+        .glitch { position: relative; display: inline-block; color: var(--primary-light); font-weight: 700; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2)); background-size: 100% 4px; }
+        .glitch::before, .glitch::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #0a0a0a; }
+        .glitch::before { left: 2px; text-shadow: -2px 0 #ff00c1; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim-1 4s infinite linear alternate-reverse; }
+        .glitch::after { left: -2px; text-shadow: -2px 0 #00fff9; clip: rect(44px, 450px, 56px, 0); animation: glitch-anim-2 4s infinite linear alternate-reverse; }
+        @keyframes glitch-anim-1 { 0% { clip: rect(20px, 9999px, 81px, 0); transform: translate(0) skew(0); } 10% { clip: rect(62px, 9999px, 13px, 0); } 20% { clip: rect(62px, 9999px, 13px, 0); } 21% { clip: rect(11px, 9999px, 88px, 0); transform: translate(-2px, 1px) skew(2deg); } 22% { clip: rect(11px, 9999px, 88px, 0); transform: translate(2px, -1px) skew(-2deg); } 23% { clip: rect(11px, 9999px, 88px, 0); transform: translate(0) skew(0); } 50% { clip: rect(34px, 9999px, 64px, 0); } 56% { clip: rect(98px, 9999px, 4px, 0); transform: translate(2px, 2px) skew(3deg); } 57% { clip: rect(9px, 9999px, 50px, 0); transform: translate(-2px, -2px) skew(-3deg); } 60% { clip: rect(9px, 9999px, 50px, 0); transform: translate(0) skew(0); } 100% { clip: rect(83px, 9999px, 40px, 0); } }
+        @keyframes glitch-anim-2 { 0% { clip: rect(65px, 9999px, 100px, 0); } 25% { clip: rect(65px, 9999px, 100px, 0); } 26% { clip: rect(13px, 9999px, 76px, 0); transform: translate(-2px, -1px) skew(-2deg); } 27% { clip: rect(13px, 9999px, 76px, 0); transform: translate(2px, 1px) skew(2deg); } 30% { clip: rect(13px, 9999px, 76px, 0); transform: translate(0) skew(0); } 60% { clip: rect(22px, 9999px, 55px, 0); } 61% { clip: rect(22px, 9999px, 55px, 0); transform: translate(3px, -2px) skew(5deg); } 65% { clip: rect(22px, 9999px, 55px, 0); transform: translate(0) skew(0); } 100% { clip: rect(79px, 9999px, 32px, 0); } }
+        .hero-subtitle { font-size: clamp(1.1rem, 2.5vw, 1.3rem); opacity: 0.85; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.5; color: #e0e0e0; }
+        .scarcity-container { max-width: 420px; margin: 0 auto 1.5rem; text-align: left; background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
+        .scarcity-label { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem; font-weight: 600; font-family: var(--font-heading); color: #fff; }
         .scarcity-count { color: #EC4899; text-shadow: 0 0 10px rgba(236, 72, 153, 0.4); }
-        .progress-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-        .progress-fill {
-            width: 0%;
-            height: 100%;
-            background: var(--accent-gradient);
-            box-shadow: 0 0 15px rgba(139, 92, 246, 0.6);
-            border-radius: 4px;
-            transition: width 1.5s ease-out;
-        }
-        .scarcity-sub {
-            font-size: 0.75rem;
-            opacity: 0.6;
-            margin-top: 0.5rem;
-            text-align: center;
-        }
-
-        /* Countdown Timer Styles */
-        .timer-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .timer-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .timer-number {
-            font-family: var(--font-heading);
-            font-size: 2.5rem;
-            font-weight: 700;
-            line-height: 1;
-            background: var(--text-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-variant-numeric: tabular-nums;
-        }
-        .timer-label {
-            font-family: var(--font-body);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.6;
-            margin-top: 0.25rem;
-        }
-        .timer-separator {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: rgba(139, 92, 246, 0.5);
-            margin-bottom: 1.5rem;
-        }
-        .timer-caption {
-            text-align: center;
-            font-family: var(--font-heading);
-            color: var(--primary-light);
-            opacity: 0.8;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        @media (max-width: 600px) {
-            .timer-container { gap: 0.5rem; }
-            .timer-number { font-size: 1.8rem; }
-            .timer-separator { font-size: 1.5rem; }
-        }
-
-        /* --------------------------- */
-        /* TRANSLUCENT STICKY BUTTON   */
-        /* --------------------------- */
-        .sticky-cta {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 999;
-            /* 40% Opacity Gradient for Glass Effect */
-            background: linear-gradient(135deg, rgba(139, 92, 246, 0.4) 0%, rgba(236, 72, 153, 0.4) 100%);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            display: none; /* Hidden by default */
-            width: 90%;
-            text-align: center;
-            font-family: var(--font-heading);
-            border: 1px solid rgba(255,255,255,0.3); /* Sharper glass edge */
-            backdrop-filter: blur(15px); /* Heavy Frosted glass effect */
-            transition: transform 0.2s;
-        }
-        .sticky-cta:active {
-            transform: translateX(-50%) scale(0.98);
-        }
-        /* --------------------------- */
-        
-        /* Share Section - RESTORED */
-        .share-section {
-            padding: 3rem 2rem;
-            background: rgba(139, 92, 246, 0.05);
-            border: 1px solid rgba(139, 92, 246, 0.1);
-            border-radius: 16px;
-            text-align: center;
-            margin: 2rem auto;
-            max-width: 800px;
-        }
-        .share-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            background: var(--text-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .share-subtitle {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-bottom: 2rem;
-        }
-        .share-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .share-button, .waitlist-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.875rem 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            cursor: pointer;
-            font-family: var(--font-heading);
-            position: relative;
-            overflow: hidden;
-            min-width: 60px;
-        }
-        .share-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(139, 92, 246, 0.5);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .native-share-btn {
-            background: var(--accent-gradient);
-            border: none;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-            width: 100%;
-            max-width: 300px;
-            margin-bottom: 1.5rem;
-            display: none;
-        }
-        .native-share-btn:hover {
-            transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 0 40px rgba(139, 92, 246, 0.6);
-        }
+        .progress-bar { width: 100%; height: 6px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; position: relative; }
+        .progress-fill { width: 0%; height: 100%; background: var(--accent-gradient); box-shadow: 0 0 15px rgba(139, 92, 246, 0.6); border-radius: 4px; transition: width 1.5s ease-out; }
+        .scarcity-sub { font-size: 0.75rem; opacity: 0.6; margin-top: 0.5rem; text-align: center; }
+        .timer-container { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .timer-item { display: flex; flex-direction: column; align-items: center; }
+        .timer-number { font-family: var(--font-heading); font-size: 2.5rem; font-weight: 700; line-height: 1; background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-variant-numeric: tabular-nums; }
+        .timer-label { font-family: var(--font-body); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; margin-top: 0.25rem; }
+        .timer-separator { font-family: var(--font-heading); font-size: 2rem; color: rgba(139, 92, 246, 0.5); margin-bottom: 1.5rem; }
+        .timer-caption { text-align: center; font-family: var(--font-heading); color: var(--primary-light); opacity: 0.8; margin-bottom: 2rem; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; }
+        @media (max-width: 600px) { .timer-container { gap: 0.5rem; } .timer-number { font-size: 1.8rem; } .timer-separator { font-size: 1.5rem; } }
+        .sticky-cta { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 999; background: linear-gradient(135deg, rgba(139, 92, 246, 0.4) 0%, rgba(236, 72, 153, 0.4) 100%); color: white; padding: 12px 24px; border-radius: 50px; font-weight: 700; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.3); display: none; width: 90%; text-align: center; font-family: var(--font-heading); border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(15px); transition: transform 0.2s; }
+        .sticky-cta:active { transform: translateX(-50%) scale(0.98); }
+        .share-section { padding: 3rem 2rem; background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 16px; text-align: center; margin: 2rem auto; max-width: 800px; }
+        .share-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .share-subtitle { font-size: 1rem; opacity: 0.8; margin-bottom: 2rem; }
+        .share-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .share-button, .waitlist-button { display: flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.875rem 1.5rem; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; color: white; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s; cursor: pointer; font-family: var(--font-heading); position: relative; overflow: hidden; min-width: 60px; }
+        .share-button:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(139, 92, 246, 0.5); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+        .native-share-btn { background: var(--accent-gradient); border: none; box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); width: 100%; max-width: 300px; margin-bottom: 1.5rem; display: none; }
+        .native-share-btn:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
         .share-button svg { width: 24px; height: 24px; }
         .copy-success { display: none; color: #4ade80; font-size: 0.9rem; margin-top: 1rem; }
         .already-signed-up { padding: 2rem; background: rgba(139, 92, 246, 0.1); border-radius: 12px; border: 1px solid rgba(139, 92, 246, 0.3); text-align: center; }
-        
-        /* Sections */
         .section { padding: 6rem 2rem; position: relative; }
         .container { max-width: var(--max-width); margin: 0 auto; }
         .section-title { font-size: clamp(2rem, 5vw, 3rem); text-align: center; margin-bottom: 3rem; font-weight: 700; letter-spacing: -0.02em; }
-        
-        /* Demo Section */
         .demo-section { background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%); }
         .demo-container { max-width: 450px; margin: 0 auto; background: #000; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 80px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.1); }
         .demo-frame { width: 100%; height: 90vh; max-height: 800px; border: none; background-color: #000; border-radius: 24px; }
-        
-        /* How It Works */
         .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; max-width: 1000px; margin: 0 auto; }
         .how-item { text-align: center; }
         .how-number { width: 60px; height: 60px; background: var(--accent-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.5rem; font-weight: 700; box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
         .how-title { font-size: 1.3rem; margin-bottom: 1rem; font-weight: 600; }
         .how-text { opacity: 0.7; line-height: 1.6; font-weight: 300; }
-        
-        /* Features Grid */
         .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
         .feature-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 2.5rem 2rem; transition: all 0.3s; }
         .feature-card:hover { background: rgba(255, 255, 255, 0.04); border-color: rgba(139, 92, 246, 0.3); transform: translateY(-5px); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
@@ -495,27 +110,18 @@
         .feature-title { font-size: 1.2rem; margin-bottom: 1rem; font-weight: 600; color: #fff; }
         .feature-description { opacity: 0.7; line-height: 1.6; font-weight: 300; }
         .feature-description strong { color: #A78BFA; font-weight: 600; }
-        
-        /* Genesis Vote */
         .genesis-box { border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 20px; padding: 3rem 2rem; background: rgba(139, 92, 246, 0.03); max-width: 800px; margin: 0 auto; text-align: center; backdrop-filter: blur(10px); }
         .genesis-title { font-size: 2rem; margin-bottom: 1rem; background: var(--text-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* FAQ */
         .faq-container { max-width: 800px; margin: 0 auto; }
         details { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; cursor: pointer; transition: background 0.2s; }
         details:hover { background: rgba(255, 255, 255, 0.04); }
         summary { font-weight: 600; font-size: 1.1rem; list-style: none; font-family: var(--font-heading); letter-spacing: -0.01em; }
         summary::-webkit-details-marker { display: none; }
         details p { margin-top: 1rem; opacity: 0.8; line-height: 1.6; font-weight: 300; }
-        
-        /* Footer */
         footer { padding: 3rem 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center; }
         .footer-content { max-width: var(--max-width); margin: 0 auto; }
         .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
-        /* Removed link styles as links are temporarily hidden */
         .copyright { opacity: 0.4; font-size: 0.9rem; }
-        
-        /* Cyber Grid Background Animation */
         .bg-gradient { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px); background-size: 50px 50px; mask-image: radial-gradient(circle at center, black 40%, transparent 80%); -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%); }
         .bg-gradient::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, #8B5CF6 0%, transparent 70%); top: -300px; right: -200px; opacity: 0.4; filter: blur(80px); animation: float 20s ease-in-out infinite; }
         .bg-gradient::after { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, #EC4899 0%, transparent 70%); bottom: -200px; left: -100px; opacity: 0.4; filter: blur(80px); animation: float 25s ease-in-out infinite reverse; }
@@ -523,8 +129,6 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .animate-in { animation: fadeInUp 1s ease-out; }
         @media (max-width: 768px) { .formkit-form { width: 100% !important; } }
-        
-        /* ConvertKit Form Overrides */
         .formkit-form[data-uid="12d90efd93"] { margin: 2rem auto !important; padding: 20px !important; max-width: 600px !important; }
         .formkit-form[data-uid="12d90efd93"] [data-style="minimal"] { padding: 30px 20px !important; border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 12px !important; background: rgba(255,255,255,0.02) !important; }
         .formkit-form[data-uid="12d90efd93"] .formkit-header h2 { font-family: var(--font-heading) !important; color: #fff !important; }
@@ -550,52 +154,24 @@
             </ul>
         </div>
     </nav>
-
     <section class="hero" id="join">
         <div class="bg-gradient"></div>
         <div class="hero-content animate-in">
-            <h1 class="hero-title">
-                Stories That<br>
-                <span class="glitch-wrapper">
-                    <span class="glitch" data-text="Belong to Everyone">Belong to Everyone</span>
-                </span>
-            </h1>
-            
-            <p class="hero-subtitle">
-                Watch. Choose. Shape tomorrow's story with a growing community.<br>
-                Every day, one decision. Together, we write what happens next.
-            </p>
-
+            <h1 class="hero-title">Stories That<br><span class="glitch-wrapper"><span class="glitch" data-text="Belong to Everyone">Belong to Everyone</span></span></h1>
+            <p class="hero-subtitle">Watch. Choose. Shape tomorrow's story with a growing community.<br>Every day, one decision. Together, we write what happens next.</p>
             <div id="launch-timer" class="timer-container">
-                <div class="timer-item">
-                    <div class="timer-number" id="days">00</div>
-                    <div class="timer-label">Days</div>
-                </div>
+                <div class="timer-item"><div class="timer-number" id="days">00</div><div class="timer-label">Days</div></div>
                 <div class="timer-separator">:</div>
-                <div class="timer-item">
-                    <div class="timer-number" id="hours">00</div>
-                    <div class="timer-label">Hours</div>
-                </div>
+                <div class="timer-item"><div class="timer-number" id="hours">00</div><div class="timer-label">Hours</div></div>
                 <div class="timer-separator">:</div>
-                <div class="timer-item">
-                    <div class="timer-number" id="minutes">00</div>
-                    <div class="timer-label">Mins</div>
-                </div>
+                <div class="timer-item"><div class="timer-number" id="minutes">00</div><div class="timer-label">Mins</div></div>
                 <div class="timer-separator">:</div>
-                <div class="timer-item">
-                    <div class="timer-number" id="seconds">00</div>
-                    <div class="timer-label">Secs</div>
-                </div>
+                <div class="timer-item"><div class="timer-number" id="seconds">00</div><div class="timer-label">Secs</div></div>
             </div>
             <div class="timer-caption">Until Genesis Vote Begins</div>
             <div class="scarcity-container">
-                <div class="scarcity-label">
-                    <span>Founding Member Spots</span>
-                    <span class="scarcity-count"><span id="signup-count">...</span> / 1,000 Taken</span>
-                </div>
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill"></div>
-                </div>
+                <div class="scarcity-label"><span>Founding Member Spots</span><span class="scarcity-count"><span id="signup-count">...</span> / 1,000 Taken</span></div>
+                <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
                 <p class="scarcity-sub" id="spots-remaining">Loading available spots...</p>
             </div>
             <form action="https://app.kit.com/forms/8780992/subscriptions" class="seva-form formkit-form" method="post" data-sv-form="8780992" data-uid="12d90efd93" data-format="inline" data-version="5" data-options="{&quot;settings&quot;:{&quot;after_subscribe&quot;:{&quot;action&quot;:&quot;message&quot;,&quot;success_message&quot;:&quot;━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n✓ You're in!\n\nCheck your email to confirm your spot.\n\nYou're now one of the first 1,000 founding \nmembers. We'll email you when beta launches \n(Q1 2026).\n\nWant to help spread the word? \nShare Stryverse with friends who love \ninteractive stories.\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━&quot;,&quot;redirect_url&quot;:&quot;&quot;},&quot;analytics&quot;:{&quot;google&quot;:null,&quot;fathom&quot;:null,&quot;facebook&quot;:null,&quot;segment&quot;:null,&quot;pinterest&quot;:null,&quot;sparkloop&quot;:null,&quot;googletagmanager&quot;:null},&quot;modal&quot;:{&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;powered_by&quot;:{&quot;show&quot;:true,&quot;url&quot;:&quot;https://kit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic&quot;},&quot;recaptcha&quot;:{&quot;enabled&quot;:false},&quot;return_visitor&quot;:{&quot;action&quot;:&quot;show&quot;,&quot;custom_content&quot;:&quot;&quot;},&quot;slide_in&quot;:{&quot;display_in&quot;:&quot;bottom_right&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15},&quot;sticky_bar&quot;:{&quot;display_in&quot;:&quot;top&quot;,&quot;trigger&quot;:&quot;timer&quot;,&quot;scroll_percentage&quot;:null,&quot;timer&quot;:5,&quot;devices&quot;:&quot;all&quot;,&quot;show_once_every&quot;:15}},&quot;version&quot;:&quot;5&quot;}" min-width="400 500 600 700 800" style="background-color: transparent;">
@@ -611,85 +187,40 @@
                     <div class="formkit-guarantee" data-element="guarantee" style="color: rgba(255, 255, 255, 0.6); font-size: 13px; font-weight: 400;"><p>✓ First to use the platform ✓ Lifetime early adopter benefits</p></div>
                 </div>
             </form>
-            
-            <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.95rem;">
-                👇 Try the demo below (30 seconds)
-            </p>
+            <p style="margin-top: 2rem; opacity: 0.7; font-size: 0.95rem;">👇 Try the demo below (30 seconds)</p>
         </div>
     </section>
-
     <section class="section" id="how" style="background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);">
         <div class="container">
             <h2 class="section-title">How It Works</h2>
             <div class="how-grid">
-                <div class="how-item">
-                    <div class="how-number">1</div>
-                    <h3 class="how-title">Watch the Moment</h3>
-                    <p class="how-text">Every day, a new episode. A character faces a choice. A relationship hangs in balance. The story could go anywhere.</p>
-                </div>
-                <div class="how-item">
-                    <div class="how-number">2</div>
-                    <h3 class="how-title">Make Your Choice</h3>
-                    <p class="how-text">Two paths diverge. You choose one. Your vote joins thousands of others deciding what happens next.</p>
-                </div>
-                <div class="how-item">
-                    <div class="how-number">3</div>
-                    <h3 class="how-title">See What Wins</h3>
-                    <p class="how-text">The next day, the winning path becomes reality. Watch the story unfold from the choice you helped make.</p>
-                </div>
+                <div class="how-item"><div class="how-number">1</div><h3 class="how-title">Watch the Moment</h3><p class="how-text">Every day, a new episode. A character faces a choice. A relationship hangs in balance. The story could go anywhere.</p></div>
+                <div class="how-item"><div class="how-number">2</div><h3 class="how-title">Make Your Choice</h3><p class="how-text">Two paths diverge. You choose one. Your vote joins thousands of others deciding what happens next.</p></div>
+                <div class="how-item"><div class="how-number">3</div><h3 class="how-title">See What Wins</h3><p class="how-text">The next day, the winning path becomes reality. Watch the story unfold from the choice you helped make.</p></div>
             </div>
         </div>
     </section>
-
     <section class="section demo-section" id="demo">
         <div class="container">
             <h2 class="section-title">Experience It Yourself</h2>
             <p style="text-align: center; font-size: 1.1rem; opacity: 0.8; margin-bottom: 3rem; font-weight: 300;">This is what it feels like. Takes 30 seconds.</p>
-            <div class="demo-container">
-                <iframe src="stryverse-demo-ENHANCED.html" class="demo-frame" id="demoFrame" title="Stryverse Interactive Demo"></iframe>
-            </div>
+            <div class="demo-container"><iframe src="stryverse-demo-ENHANCED.html" class="demo-frame" id="demoFrame" title="Stryverse Interactive Demo"></iframe></div>
             <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; opacity: 0.6;">This demo shows the basics. The full experience has more.</p>
         </div>
     </section>
-
     <section class="section" id="features" style="background: linear-gradient(180deg, #111111 0%, #0a0a0a 100%);">
         <div class="container">
             <h2 class="section-title">Streaming is Broken. <br><span class="gradient-text">Let's Fix That.</span></h2>
             <div class="feature-grid">
-                <div class="feature-card">
-                    <div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">⏳</div>
-                    <h3 class="feature-title">The Forever Season</h3>
-                    <p class="feature-description"><strong>The Old Way:</strong> Wait 2 years for a new season. Binge it in a weekend. Feel empty. <br><br><strong>The Stryverse:</strong> A story that flows daily. No mid-season breaks. No cancellations. Just a world that grows with you.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🔮</div>
-                    <h3 class="feature-title">Alive by Design</h3>
-                    <p class="feature-description"><strong>The Old Way:</strong> Yell at the screen when characters make bad choices. Nothing changes. <br><br><strong>The Stryverse:</strong> Break the glass wall. The story doesn't just play; it listens.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">⚡</div>
-                    <h3 class="feature-title">Mass Synchronicity</h3>
-                    <p class="feature-description"><strong>The Old Way:</strong> Watch alone in the dark. Avoid spoilers online. <br><br><strong>The Stryverse:</strong> Thousands of us witnessing the same moment at the same second. A shared reality.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🥩</div>
-                    <h3 class="feature-title">Real Consequences</h3>
-                    <p class="feature-description">There are no do-overs here. No reloading the save file. When the timeline moves forward, it's permanent. Be there or miss history.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">💎</div>
-                    <h3 class="feature-title">The Creator Economy 2.0</h3>
-                    <p class="feature-description">Current platforms demand you fight for attention with every video. Stryverse builds an addiction to the *next* moment. Sustainable, engaged, predictable.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🚀</div>
-                    <h3 class="feature-title">The Genesis Access</h3>
-                    <p class="feature-description">We are letting 1,000 people in to test the "Engine." You won't just see the story; you'll decide how the universe begins.</p>
-                </div>
+                <div class="feature-card"><div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">⏳</div><h3 class="feature-title">The Forever Season</h3><p class="feature-description"><strong>The Old Way:</strong> Wait 2 years for a new season. Binge it in a weekend. Feel empty. <br><br><strong>The Stryverse:</strong> A story that flows daily. No mid-season breaks. No cancellations. Just a world that grows with you.</p></div>
+                <div class="feature-card"><div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🔮</div><h3 class="feature-title">Alive by Design</h3><p class="feature-description"><strong>The Old Way:</strong> Yell at the screen when characters make bad choices. Nothing changes. <br><br><strong>The Stryverse:</strong> Break the glass wall. The story doesn't just play; it listens.</p></div>
+                <div class="feature-card"><div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">⚡</div><h3 class="feature-title">Mass Synchronicity</h3><p class="feature-description"><strong>The Old Way:</strong> Watch alone in the dark. Avoid spoilers online. <br><br><strong>The Stryverse:</strong> Thousands of us witnessing the same moment at the same second. A shared reality.</p></div>
+                <div class="feature-card"><div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🥩</div><h3 class="feature-title">Real Consequences</h3><p class="feature-description">There are no do-overs here. No reloading the save file. When the timeline moves forward, it's permanent. Be there or miss history.</p></div>
+                <div class="feature-card"><div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">💎</div><h3 class="feature-title">The Creator Economy 2.0</h3><p class="feature-description">Current platforms demand you fight for attention with every video. Stryverse builds an addiction to the *next* moment. Sustainable, engaged, predictable.</p></div>
+                <div class="feature-card"><div class="feature-icon" style="display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">🚀</div><h3 class="feature-title">The Genesis Access</h3><p class="feature-description">We are letting 1,000 people in to test the "Engine." You won't just see the story; you'll decide how the universe begins.</p></div>
             </div>
         </div>
     </section>
-
     <section class="section" style="background: radial-gradient(circle at center, rgba(139, 92, 246, 0.1) 0%, transparent 70%);">
         <div class="container">
             <div class="genesis-box">
@@ -700,319 +231,67 @@
             </div>
         </div>
     </section>
-
     <section class="section" id="faq" style="background: var(--primary-dark);">
         <div class="container">
             <h2 class="section-title">Common Questions</h2>
             <div class="faq-container">
-                <details>
-                    <summary>Is this a game or a streaming service?</summary>
-                    <p>It's the missing link between them. Streaming is passive; games require skill and time. Stryverse is a <strong>Massively Multiplayer Narrative</strong>. It requires no controller skills—just your opinion.</p>
-                </details>
-                <details>
-                    <summary>Do I need to watch hours of content?</summary>
-                    <p>No. We respect your time. Episodes are designed to be 3-5 minutes long. High impact, zero fluff. It fits perfectly into your morning coffee ritual or evening commute.</p>
-                </details>
-                <details>
-                    <summary>Why join the Alpha instead of waiting for public launch?</summary>
-                    <p>The "Genesis Vote" happens only once. The decisions made by Alpha members will set the permanent canon/lore for the entire platform's history. You can watch history later, or you can write it now.</p>
-                </details>
-                <details>
-                    <summary>What happens if I miss a vote?</summary>
-                    <p>The world moves on without you. That is the point. Unlike a video game save file, the Stryverse timeline is persistent. Real stakes mean the clock doesn't stop.</p>
-                </details>
-                <details>
-                    <summary>I'm a writer/animator. Can I build here?</summary>
-                    <p>We are hand-picking the first wave of "Universe Architects." If you want to build a story that talks back to you, join the waitlist. We will be sending out Creator Applications to founding members first.</p>
-                </details>
-                <details>
-                    <summary>Is there a cost?</summary>
-                    <p>The Genesis Era is completely free. We are building a community of founders, not just subscribers. Get in before the gates close.</p>
-                </details>
+                <details><summary>Is this a game or a streaming service?</summary><p>It's the missing link between them. Streaming is passive; games require skill and time. Stryverse is a <strong>Massively Multiplayer Narrative</strong>. It requires no controller skills—just your opinion.</p></details>
+                <details><summary>Do I need to watch hours of content?</summary><p>No. We respect your time. Episodes are designed to be 3-5 minutes long. High impact, zero fluff. It fits perfectly into your morning coffee ritual or evening commute.</p></details>
+                <details><summary>Why join the Alpha instead of waiting for public launch?</summary><p>The "Genesis Vote" happens only once. The decisions made by Alpha members will set the permanent canon/lore for the entire platform's history. You can watch history later, or you can write it now.</p></details>
+                <details><summary>What happens if I miss a vote?</summary><p>The world moves on without you. That is the point. Unlike a video game save file, the Stryverse timeline is persistent. Real stakes mean the clock doesn't stop.</p></details>
+                <details><summary>I'm a writer/animator. Can I build here?</summary><p>We are hand-picking the first wave of "Universe Architects." If you want to build a story that talks back to you, join the waitlist. We will be sending out Creator Applications to founding members first.</p></details>
+                <details><summary>Is there a cost?</summary><p>The Genesis Era is completely free. We are building a community of founders, not just subscribers. Get in before the gates close.</p></details>
             </div>
         </div>
     </section>
-
     <section class="section" id="shareContainer" style="background: var(--primary-dark);">
         <div class="container">
             <div class="share-section">
                 <h3 class="share-title">Help Us Grow 🚀</h3>
                 <p class="share-subtitle">Share Stryverse with friends who'd love to shape stories together</p>
-                
                 <div class="share-buttons">
-                    <button id="nativeShareBtn" onclick="shareNative()" class="share-button native-share-btn">
-                        <svg viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
-                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
-                        </svg>
-                        Share (Open App Menu)
-                    </button>
-                    
+                    <button id="nativeShareBtn" onclick="shareNative()" class="share-button native-share-btn"><svg viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>Share (Open App Menu)</button>
                     <div style="width: 100%; display: flex; justify-content: center; gap: 0.8rem; flex-wrap: wrap;">
-                        <a href="javascript:void(0)" onclick="shareTwitter()" rel="noopener noreferrer" class="share-button" style="background: #000;">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-                        </a>
-
-                        <a href="javascript:void(0)" onclick="shareWhatsApp()" rel="noopener noreferrer" class="share-button" style="background: #25D366;">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                        </a>
-
-                        <a href="javascript:void(0)" onclick="shareFacebook()" rel="noopener noreferrer" class="share-button" style="background: #1877F2;">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        </a>
-
-                        <a href="javascript:void(0)" onclick="shareBluesky()" rel="noopener noreferrer" class="share-button" style="background: #0285FF;">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565-.131 2.032-.241 2.23.12 2.754 1.036 4.08 2.957 9.965 3.638 11.617c.636 1.545.89 1.426 1.407 1.043.518-.383 6.6-4.417 6.6-4.417s6.082 4.034 6.6 4.417c.517.383.771.502 1.407-1.043.681-1.652 2.602-7.537 3.518-8.863.361-.524.251-.722-.782-1.19C21.439 1.266 20.434.944 17.798 2.805 15.046 4.747 12.087 8.686 11 10.8z"/></svg>
-                        </a>
-
-                        <a href="javascript:void(0)" onclick="shareReddit()" rel="noopener noreferrer" class="share-button" style="background: #FF4500;">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg>
-                        </a>
-
-                        <button onclick="copyLink()" class="share-button copy-button">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-                            Copy
-                        </button>
+                        <a href="javascript:void(0)" onclick="shareTwitter()" rel="noopener noreferrer" class="share-button" style="background: #000;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                        <a href="javascript:void(0)" onclick="shareWhatsApp()" rel="noopener noreferrer" class="share-button" style="background: #25D366;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                        <a href="javascript:void(0)" onclick="shareFacebook()" rel="noopener noreferrer" class="share-button" style="background: #1877F2;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                        <a href="javascript:void(0)" onclick="shareBluesky()" rel="noopener noreferrer" class="share-button" style="background: #0285FF;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565-.131 2.032-.241 2.23.12 2.754 1.036 4.08 2.957 9.965 3.638 11.617c.636 1.545.89 1.426 1.407 1.043.518-.383 6.6-4.417 6.6-4.417s6.082 4.034 6.6 4.417c.517.383.771.502 1.407-1.043.681-1.652 2.602-7.537 3.518-8.863.361-.524.251-.722-.782-1.19C21.439 1.266 20.434.944 17.798 2.805 15.046 4.747 12.087 8.686 11 10.8z"/></svg></a>
+                        <a href="javascript:void(0)" onclick="shareReddit()" rel="noopener noreferrer" class="share-button" style="background: #FF4500;"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.617a1.214 1.214 0 0 1 1.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 0 0-.231.094.33.33 0 0 0 0 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 0 0 .029-.463.33.33 0 0 0-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 0 0-.232-.095z"/></svg></a>
+                        <button onclick="copyLink()" class="share-button copy-button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Copy</button>
                     </div>
                 </div>
                 <p class="copy-success" id="copySuccess">✓ Link copied to clipboard!</p>
             </div>
         </div>
     </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                </div>
-            <p class="copyright">© 2025 Stryverse. Where stories belong to everyone.</p>
-        </div>
-    </footer>
-    
+    <footer><div class="footer-content"><div class="footer-links"></div><p class="copyright">© 2025 Stryverse. Where stories belong to everyone.</p></div></footer>
     <a href="#join" class="sticky-cta" id="stickyBtn">✨ Join The Genesis Vote</a>
-
     <script>
-        // ========================================
-        // MOBILE NAV LOGIC
-        // ========================================
-        function toggleMenu() {
-            const nav = document.querySelector('.nav-links');
-            const btn = document.querySelector('.mobile-menu-btn');
-            nav.classList.toggle('active');
-            
-            if(nav.classList.contains('active')) {
-                btn.innerHTML = '✕';
-                document.body.style.overflow = 'hidden';
-            } else {
-                btn.innerHTML = '☰';
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        function closeMenu() {
-            const nav = document.querySelector('.nav-links');
-            const btn = document.querySelector('.mobile-menu-btn');
-            nav.classList.remove('active');
-            btn.innerHTML = '☰';
-            document.body.style.overflow = 'auto';
-        }
-
-        // ========================================
-        // AUTHENTIC PROGRESS BAR LOGIC
-        // ========================================
-        const FALLBACK_SIGNUPS = 142; 
-        const GOAL = 1000;
-
-        document.addEventListener("DOMContentLoaded", function() {
-            fetchStats();
-        });
-
-        async function fetchStats() {
-            try {
-                // CACHE BUSTING: Forces fresh data
-                const response = await fetch('stats.json?t=' + new Date().getTime());
-                if (!response.ok) throw new Error("Stats file not found");
-                
-                const data = await response.json();
-                updateProgressBar(data.signups);
-            } catch (e) {
-                console.log("Using fallback stats:", e);
-                updateProgressBar(FALLBACK_SIGNUPS);
-            }
-        }
-
-        function updateProgressBar(count) {
-            const countEl = document.getElementById('signup-count');
-            const fillEl = document.getElementById('progress-fill');
-            const remainingEl = document.getElementById('spots-remaining');
-            
-            countEl.innerText = count;
-            
-            let percentage = (count / GOAL) * 100;
-            if(percentage > 100) percentage = 100;
-            
-            setTimeout(() => {
-                fillEl.style.width = percentage + "%";
-            }, 100);
-
-            const remaining = GOAL - count;
-            if (remaining <= 0) {
-                remainingEl.innerText = "Waitlist Active - Joining Queue";
-                remainingEl.style.color = "#EC4899";
-            } else {
-                remainingEl.innerText = remaining + " spots remaining for Alpha access";
-            }
-        }
-
-        // ========================================
-        // SHARE FUNCTIONALITY
-        // ========================================
+        function toggleMenu() { const nav = document.querySelector('.nav-links'); const btn = document.querySelector('.mobile-menu-btn'); nav.classList.toggle('active'); if(nav.classList.contains('active')) { btn.innerHTML = '✕'; document.body.style.overflow = 'hidden'; } else { btn.innerHTML = '☰'; document.body.style.overflow = 'auto'; } }
+        function closeMenu() { const nav = document.querySelector('.nav-links'); const btn = document.querySelector('.mobile-menu-btn'); nav.classList.remove('active'); btn.innerHTML = '☰'; document.body.style.overflow = 'auto'; }
+        const FALLBACK_SIGNUPS = 142; const GOAL = 1000;
+        document.addEventListener("DOMContentLoaded", function() { fetchStats(); });
+        async function fetchStats() { try { const response = await fetch('stats.json?t=' + new Date().getTime()); if (!response.ok) throw new Error("Stats file not found"); const data = await response.json(); updateProgressBar(data.signups); } catch (e) { console.log("Using fallback stats:", e); updateProgressBar(FALLBACK_SIGNUPS); } }
+        function updateProgressBar(count) { const countEl = document.getElementById('signup-count'); const fillEl = document.getElementById('progress-fill'); const remainingEl = document.getElementById('spots-remaining'); countEl.innerText = count; let percentage = (count / GOAL) * 100; if(percentage > 100) percentage = 100; setTimeout(() => { fillEl.style.width = percentage + "%"; }, 100); const remaining = GOAL - count; if (remaining <= 0) { remainingEl.innerText = "Waitlist Active - Joining Queue"; remainingEl.style.color = "#EC4899"; } else { remainingEl.innerText = remaining + " spots remaining for Alpha access"; } }
         let pageUrl = window.location.href;
-        
-        document.addEventListener('DOMContentLoaded', function() {
-            const nativeBtn = document.getElementById('nativeShareBtn');
-            if (navigator.share && nativeBtn) { nativeBtn.style.display = 'block'; }
-            checkSignupStatus();
-            setTimeout(startFormObserver, 2000);
-        });
-        
-        function shareNative() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Stryverse',
-                    text: 'I just joined the Genesis Vote for Stryverse. We choose the story outcome daily. Check it out:',
-                    url: window.location.href
-                });
-            }
-        }
-        function shareWhatsApp() { window.open(`https://wa.me/?text=${encodeURIComponent("I just joined the Stryverse Alpha. We're voting on story outcomes daily. Check it out: " + pageUrl)}`, '_blank', 'noopener,noreferrer'); }
-        function shareTwitter() { window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent("Just joined Stryverse - interactive storytelling where communities vote on story decisions daily. Like Telltale meets TikTok! 🎬")}&url=${encodeURIComponent(pageUrl)}`, '_blank', 'width=550,height=420,noopener,noreferrer'); }
-        
-        // RESTORED SHARE FUNCTIONS
-        function shareFacebook() {
-            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}`;
-            window.open(url, '_blank', 'width=550,height=420,noopener,noreferrer');
-        }
-
-        function shareBluesky() {
-            const text = "I just joined the Stryverse. We vote on the story outcome daily. Check it out: ";
-            const url = `https://bsky.app/intent/compose?text=${encodeURIComponent(text + " " + pageUrl)}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
-        }
-
-        function shareReddit() {
-            const title = "Stryverse - Interactive Storytelling";
-            const url = `https://reddit.com/submit?url=${encodeURIComponent(pageUrl)}&title=${encodeURIComponent(title)}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
-        }
-
-        function shareTelegram() {
-            const text = "Check out Stryverse - Interactive stories:";
-            const url = `https://t.me/share/url?url=${encodeURIComponent(pageUrl)}&text=${encodeURIComponent(text)}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
-        }
-        
-        function copyLink() {
-            navigator.clipboard.writeText(pageUrl).then(() => {
-                const successMsg = document.getElementById('copySuccess');
-                successMsg.style.display = 'block';
-                setTimeout(() => { successMsg.style.display = 'none'; }, 3000);
-            });
-        }
-        
-        function checkSignupStatus() {
-            const hasSignedUp = localStorage.getItem('stryverse_signed_up');
-            if (hasSignedUp === 'true') {
-                const formDivs = document.querySelectorAll('[data-sv-form="8780992"]');
-                formDivs.forEach(formDiv => {
-                    formDiv.innerHTML = `<div class="already-signed-up"><h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #A78BFA; font-family: 'Space Grotesk', sans-serif;">✓ You're on the list!</h3><p style="opacity: 0.9; margin-bottom: 1rem;">Check your email for confirmation. See you in early access!</p><button onclick="resetSignup()" style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; cursor: pointer; font-size: 0.9rem;">Sign up with a different email →</button></div>`;
-                });
-            }
-        }
+        document.addEventListener('DOMContentLoaded', function() { const nativeBtn = document.getElementById('nativeShareBtn'); if (navigator.share && nativeBtn) { nativeBtn.style.display = 'block'; } checkSignupStatus(); setTimeout(startFormObserver, 2000); });
+        function shareNative() { if (navigator.share) { navigator.share({ title: 'Stryverse', text: 'I just joined the Genesis Vote for Stryverse. We choose the story outcome daily. Check it out:', url: window.location.href }); } }
+        function shareWhatsApp() { window.open("https://wa.me/?text=" + encodeURIComponent("I just joined the Stryverse Alpha. We're voting on story outcomes daily. Check it out: " + pageUrl), '_blank', 'noopener,noreferrer'); }
+        function shareTwitter() { window.open("https://twitter.com/intent/tweet?text=" + encodeURIComponent("Just joined Stryverse - interactive storytelling where communities vote on story decisions daily. Like Telltale meets TikTok!") + "&url=" + encodeURIComponent(pageUrl), '_blank', 'width=550,height=420,noopener,noreferrer'); }
+        function shareFacebook() { window.open("https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(pageUrl), '_blank', 'width=550,height=420,noopener,noreferrer'); }
+        function shareBluesky() { window.open("https://bsky.app/intent/compose?text=" + encodeURIComponent("I just joined the Stryverse. We vote on the story outcome daily. Check it out: " + pageUrl), '_blank', 'noopener,noreferrer'); }
+        function shareReddit() { window.open("https://reddit.com/submit?url=" + encodeURIComponent(pageUrl) + "&title=" + encodeURIComponent("Stryverse - Interactive Storytelling"), '_blank', 'noopener,noreferrer'); }
+        function copyLink() { navigator.clipboard.writeText(pageUrl).then(() => { const successMsg = document.getElementById('copySuccess'); successMsg.style.display = 'block'; setTimeout(() => { successMsg.style.display = 'none'; }, 3000); }); }
+        function checkSignupStatus() { const hasSignedUp = localStorage.getItem('stryverse_signed_up'); if (hasSignedUp === 'true') { const formDivs = document.querySelectorAll('[data-sv-form="8780992"]'); formDivs.forEach(formDiv => { formDiv.innerHTML = '<div class="already-signed-up"><h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #A78BFA; font-family: Space Grotesk, sans-serif;">✓ You are on the list!</h3><p style="opacity: 0.9; margin-bottom: 1rem;">Check your email for confirmation. See you in early access!</p><button onclick="resetSignup()" style="padding: 0.75rem 1.5rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; color: white; cursor: pointer; font-size: 0.9rem;">Sign up with a different email</button></div>'; }); } }
         function resetSignup() { localStorage.removeItem('stryverse_signed_up'); location.reload(); }
         function markAsSignedUp() { localStorage.setItem('stryverse_signed_up', 'true'); }
-        
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                mutation.addedNodes.forEach(function(node) {
-                    if (node.textContent && (node.textContent.toLowerCase().includes('success') || node.textContent.toLowerCase().includes('thank you'))) {
-                        markAsSignedUp();
-                        setTimeout(() => { checkSignupStatus(); }, 2000);
-                    }
-                });
-            });
-        });
-        function startFormObserver() {
-            const formContainers = document.querySelectorAll('[data-sv-form="8780992"]');
-            formContainers.forEach(container => { observer.observe(container, { childList: true, subtree: true, characterData: true }); });
-        }
-        
-        window.addEventListener('message', function(event) {
-            // SECURITY CHECK: Only accept messages from your own domain
-            // if (event.origin !== "https://stryverse.com") return;
-
-            if (event.data.type === 'scrollToSignup') {
-                const heroSection = document.getElementById('join');
-                if (heroSection) {
-                    heroSection.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'center' 
-                    });
-                }
-            }
-        });
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const target = document.getElementById(targetId);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    closeMenu();
-                }
-            });
-        });
-
-        // Sticky Button Logic
-        window.addEventListener('scroll', function() {
-            const hero = document.querySelector('.hero');
-            const btn = document.getElementById('stickyBtn');
-            // Show button when user scrolls past the hero section
-            if (hero && btn) {
-                const heroBottom = hero.offsetTop + hero.offsetHeight;
-                if (window.scrollY > heroBottom) {
-                    btn.style.display = 'block';
-                } else {
-                    btn.style.display = 'none';
-                }
-            }
-        });
-
-        // Countdown Timer Logic
+        const observer = new MutationObserver(function(mutations) { mutations.forEach(function(mutation) { mutation.addedNodes.forEach(function(node) { if (node.textContent && (node.textContent.toLowerCase().includes('success') || node.textContent.toLowerCase().includes('thank you'))) { markAsSignedUp(); setTimeout(() => { checkSignupStatus(); }, 2000); } }); }); });
+        function startFormObserver() { const formContainers = document.querySelectorAll('[data-sv-form="8780992"]'); formContainers.forEach(container => { observer.observe(container, { childList: true, subtree: true, characterData: true }); }); }
+        window.addEventListener('message', function(event) { if (event.data.type === 'scrollToSignup') { const heroSection = document.getElementById('join'); if (heroSection) { heroSection.scrollIntoView({ behavior: 'smooth', block: 'center' }); } } });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const targetId = this.getAttribute('href').substring(1); const target = document.getElementById(targetId); if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); closeMenu(); } }); });
+        window.addEventListener('scroll', function() { const hero = document.querySelector('.hero'); const btn = document.getElementById('stickyBtn'); if (hero && btn) { const heroBottom = hero.offsetTop + hero.offsetHeight; if (window.scrollY > heroBottom) { btn.style.display = 'block'; } else { btn.style.display = 'none'; } } });
         const countDownDate = new Date("Feb 22, 2026 00:00:00").getTime();
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            const daysEl = document.getElementById("days");
-            const hoursEl = document.getElementById("hours");
-            const minsEl = document.getElementById("minutes");
-            const secsEl = document.getElementById("seconds");
-
-            if(daysEl) daysEl.innerHTML = days < 10 ? "0" + days : days;
-            if(hoursEl) hoursEl.innerHTML = hours < 10 ? "0" + hours : hours;
-            if(minsEl) minsEl.innerHTML = minutes < 10 ? "0" + minutes : minutes;
-            if(secsEl) secsEl.innerHTML = seconds < 10 ? "0" + seconds : seconds;
-
-            if (distance < 0) {
-                clearInterval(x);
-                document.getElementById("launch-timer").innerHTML = "<div class='timer-number'>LIVE NOW</div>";
-                document.querySelector(".timer-caption").style.display = "none";
-            }
-        }, 1000);
+        const x = setInterval(function() { const now = new Date().getTime(); const distance = countDownDate - now; const days = Math.floor(distance / (1000 * 60 * 60 * 24)); const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)); const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)); const seconds = Math.floor((distance % (1000 * 60)) / 1000); const daysEl = document.getElementById("days"); const hoursEl = document.getElementById("hours"); const minsEl = document.getElementById("minutes"); const secsEl = document.getElementById("seconds"); if(daysEl) daysEl.innerHTML = days < 10 ? "0" + days : days; if(hoursEl) hoursEl.innerHTML = hours < 10 ? "0" + hours : hours; if(minsEl) minsEl.innerHTML = minutes < 10 ? "0" + minutes : minutes; if(secsEl) secsEl.innerHTML = seconds < 10 ? "0" + seconds : seconds; if (distance < 0) { clearInterval(x); document.getElementById("launch-timer").innerHTML = "<div class='timer-number'>LIVE NOW</div>"; document.querySelector(".timer-caption").style.display = "none"; } }, 1000);
     </script>
 </body>
 </html>
