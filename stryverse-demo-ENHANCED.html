@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <script defer src="/_vercel/insights/script.js"></script>
     
     <style>
         * {
@@ -211,61 +212,51 @@
         }
         
         .moment-text {
-            font-size: 1.2rem;
-            font-weight: 600;
-            line-height: 1.4;
-            margin-bottom: 20px;
-            text-align: center;
-            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            font-weight: 300;
+            min-height: 70px;
         }
         
         .choices {
             display: flex;
             flex-direction: column;
             gap: 15px;
-            margin-bottom: 20px;
+            flex: 1;
         }
         
         .choice {
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.1);
-            cursor: pointer;
-            transition: all 0.2s;
+            padding: 20px;
             text-align: left;
+            cursor: pointer;
+            transition: all 0.3s;
             color: #fff;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255,255,255,0.03);
         }
         
         .choice:hover {
+            background: rgba(139, 92, 246, 0.15);
+            border-color: rgba(139, 92, 246, 0.5);
             transform: scale(1.02);
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.3);
         }
         
-        .choice-a { border-left: 4px solid #7c3aed; }
-        .choice-a:hover { box-shadow: 0 0 30px rgba(124, 58, 237, 0.2); }
-        
-        .choice-b { border-left: 4px solid #0891b2; }
-        .choice-b:hover { box-shadow: 0 0 30px rgba(8, 145, 178, 0.2); }
+        .choice-a:hover { border-color: #8B5CF6; box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+        .choice-b:hover { border-color: #EC4899; box-shadow: 0 0 20px rgba(236, 72, 153, 0.3); }
         
         .choice-label {
             font-size: 1.1rem;
             font-weight: 700;
             font-family: var(--font-heading);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+            margin-bottom: 8px;
         }
         
         .choice-desc {
             font-size: 0.9rem;
             opacity: 0.7;
-            font-weight: 300;
+            line-height: 1.4;
         }
         
         /* Reveal Step */
@@ -273,36 +264,37 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            padding: 40px 20px 20px;
-            text-align: center;
+            align-items: center;
             justify-content: center;
+            padding: 40px 30px;
+            text-align: center;
         }
         
         .check-circle {
             width: 80px;
             height: 80px;
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
             border-radius: 50%;
-            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
             font-size: 2.5rem;
-            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            margin-bottom: 25px;
             box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+            animation: checkPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
         
-        @keyframes popIn {
-            0% { transform: scale(0); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
+        @keyframes checkPop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
         }
         
         .reveal-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
-            margin-bottom: 10px;
             font-family: var(--font-heading);
-            background: linear-gradient(135deg, #fff 0%, #ccc 100%);
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #A78BFA, #F472B6);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -310,90 +302,111 @@
         .reveal-subtitle {
             font-size: 1rem;
             opacity: 0.8;
-            margin-bottom: 40px;
             line-height: 1.5;
-            font-weight: 300;
-        }
-        
-        /* Blinking Text Animation */
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        
-        .blink-text {
-            animation: blink 1s step-end infinite;
+            margin-bottom: 30px;
         }
         
         /* Buttons */
         .btn-primary {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #8B5CF6 0%, #EC4899 100%);
+            background: linear-gradient(135deg, #8B5CF6, #EC4899);
             border: none;
-            border-radius: 12px;
             color: #fff;
-            font-size: 1.1rem;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1rem;
             font-weight: 700;
             font-family: var(--font-heading);
             cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
             transition: all 0.3s;
-            margin-top: auto;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.3);
         }
         
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 50px rgba(139, 92, 246, 0.7);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
         }
-        
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
-        }
-        .btn-primary:hover::after { left: 100%; }
         
         .btn-secondary {
-            width: 100%;
-            padding: 14px;
             background: transparent;
-            border: none;
-            color: rgba(255,255,255,0.5);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 14px 28px;
+            border-radius: 12px;
             font-size: 0.9rem;
             font-weight: 600;
             font-family: var(--font-heading);
             cursor: pointer;
+            width: 100%;
             transition: all 0.3s;
-            margin-top: 10px;
         }
-        .btn-secondary:hover { color: #fff; }
+        
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.4);
+        }
         
         /* Progress Bar */
         .progress-bar {
             height: 4px;
             background: rgba(255,255,255,0.1);
-            position: relative;
-            width: 100%;
-        }
-        .progress-fill {
-            height: 100%;
-            background: #8B5CF6;
-            width: 25%;
-            transition: width 0.5s ease;
-            box-shadow: 0 0 10px #8B5CF6;
         }
         
-        /* Mobile Fixes */
-        @media (max-width: 480px) {
-            .demo-wrapper { max-width: 100%; }
-            .scene-text { font-size: 0.95rem; }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #8B5CF6, #EC4899);
+            transition: width 0.5s ease;
+        }
+        
+        /* Intro Step */
+        .intro-frame {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .intro-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 30px rgba(139, 92, 246, 0.5));
+        }
+        
+        .intro-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            font-family: var(--font-heading);
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #A78BFA, #F472B6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .intro-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            min-height: 80px;
+        }
+        
+        /* Blink animation for button text */
+        .blink-text {
+            animation: blink 1.5s ease-in-out infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Scene pulse animation */
+        @keyframes scenePulse {
+            0%, 100% { box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(139, 92, 246, 0.3); }
+            50% { box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 20px rgba(139, 92, 246, 0.4); }
         }
     </style>
 </head>
@@ -402,23 +415,15 @@
         <div class="crt-overlay"></div>
         
         <div class="demo-header">
-            <div class="demo-badge">Live Sequence</div>
+            <span class="demo-badge">⚡ Simulation Mode</span>
         </div>
         
-        <div class="demo-content" id="mainContent">
+        <div class="demo-content">
             <div class="step active" id="step1">
-                <div class="video-frame">
-                    <div class="video-content">
-                        <div class="scene-visual">
-                             <div class="scene-icon">🎬</div>
-                        </div>
-                        <div class="scene-title">Episode 3: "The Deal"</div>
-                        <div class="scene-text" id="introText"></div>
-                        
-                        <div style="margin-top: 30px; padding: 12px 20px; background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); border-radius: 8px; font-size: 0.8rem; color: #A78BFA;">
-                            Your community vote led here.
-                        </div>
-                    </div>
+                <div class="intro-frame">
+                    <div class="intro-icon">🔮</div>
+                    <div class="intro-title">Night Market: Episode 9</div>
+                    <div class="intro-text" id="introText"></div>
                 </div>
                 <div style="padding: 20px;">
                     <button class="btn-primary" onclick="playSequence()">
